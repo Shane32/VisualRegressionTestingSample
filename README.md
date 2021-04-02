@@ -1,4 +1,4 @@
-# SampleRegressionTesting
+# Visual Regression Testing with React
 
 This project was created to demonstrate visual regression testing within a typescript React app which uses css, sass, and sass modules.
 There is a sample (`ControlApp`) which demonstrates properly working behavior when css is not used.
@@ -22,7 +22,7 @@ only import the CSS/SASS/Modules referenced by the component(s) being tested.
 
 3. Fix image references within tests. Images need to render within the tests properly.
 
-4. No changes to the source code of the components that need to be tested. In this sample, that means no changes to `<App>`, `<ControlApp>`,
+4. No changes to the source code of the components that need to be tested. In this sample, that means no changes to components (e.g. `<App>`),
 `index.html`, or their dependencies (the CSS/SASS files or images) are allowed.
 
 ## Notes
