@@ -1,0 +1,7 @@
+@import "more";
+
+.sass {
+    > p {
+        background-color: red;
+    }
+}
