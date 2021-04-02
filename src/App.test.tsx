@@ -9,6 +9,9 @@ import ControlAppFont from './ControlAppFont';
 import AppFont from './AppFont';
 import ControlAppImage from './ControlAppImage';
 import AppImage from './AppImage';
+import AppLazyLoaded from './AppLazyLoaded';
+import { Suspense } from 'react';
+import AppLazyLoaded2 from './AppLazyLoaded2';
 
 jest.setTimeout(10000);
 
@@ -102,6 +105,28 @@ it('renders ControlAppImage', async () => {
 
 it('renders AppImage', async () => {
     render(<AppImage/>);
+    const screenshot = await generateImage({
+        viewport: {
+            height: 800,
+            width: 500
+        }
+    });
+    expect(screenshot).toMatchImageSnapshot();
+})
+
+it('renders AppLazyLoaded', async () => {
+    render(<Suspense fallback={<p>Lazy loaded fallback</p>}><AppLazyLoaded/></Suspense>);
+    const screenshot = await generateImage({
+        viewport: {
+            height: 800,
+            width: 500
+        }
+    });
+    expect(screenshot).toMatchImageSnapshot();
+})
+
+it('renders AppLazyLoaded2', async () => {
+    render(<AppLazyLoaded2/>);
     const screenshot = await generateImage({
         viewport: {
             height: 800,
