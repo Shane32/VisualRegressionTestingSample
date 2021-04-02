@@ -1,0 +1,30 @@
+name: Build check
+
+on:
+  pull_request:
+
+env:
+  NODE_VERSION: '14.x'   # set this to the node version to use
+
+jobs:
+  build-check:
+    name: Build check
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: npm install
+      run: npm install
+    - name: npm run build
+      run: npm run build
+    - name: npm run test
+      run: npm run test
+    - name: Upload visual regression failures
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: Visual regression report
+        path: src/__image_snapshots__/__diff_output__/**
