@@ -22,13 +22,15 @@ only import the CSS/SASS/Modules referenced by the component(s) being tested.
 
 3. Fix image references within tests. Images need to render within the tests properly.
 
-4. No changes to the source code of the components that need to be tested. In this sample, that means no changes to `<App>`, `index.html`, or
-their dependencies (the CSS/SASS files or images) are allowed.
+4. No changes to the source code of the components that need to be tested. In this sample, that means no changes to `<App>`, `<ControlApp>`,
+`index.html`, or their dependencies (the CSS/SASS files or images) are allowed.
 
 ## Notes
 
 Windows and Linux render differently; however, the problem is the same either way. The image snapshots in this repo were created on a Windows PC
-and the automated workflows will run on Windows.
+and the automated workflows will run on Windows. If you are working on a Linux distrubution, you may wish to regenerate the visual regression output
+of the `<ControlApp>` and copy the image file `app-test-tsx-renders-control-sample-1-snap.png` over the `app-test-tsx-renders-app-1-snap.png` file,
+replacing it. Be sure to restore the files before committing your changes to your branch/PR.
 
 Once the problems have been fixed, the test suite should pass all tests.
 
