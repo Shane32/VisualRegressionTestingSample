@@ -34,17 +34,6 @@ it('renders ControlApp', async () => {
     expect(screenshot).toMatchImageSnapshot();
 });
 
-it('renders App', async () => {
-    render(<App/>);
-    const screenshot = await generateImage({
-        viewport: {
-            height: 800,
-            width: 500
-        }
-    });
-    expect(screenshot).toMatchImageSnapshot();
-})
-
 it('renders ControlAppCss', async () => {
     render(<ControlAppCss/>);
     const screenshot = await generateImage({
@@ -55,17 +44,6 @@ it('renders ControlAppCss', async () => {
     });
     expect(screenshot).toMatchImageSnapshot();
 });
-
-it('renders AppCss', async () => {
-    render(<AppCss/>);
-    const screenshot = await generateImage({
-        viewport: {
-            height: 800,
-            width: 500
-        }
-    });
-    expect(screenshot).toMatchImageSnapshot();
-})
 
 it('renders ControlAppFont', async () => {
     render(<ControlAppFont/>);
@@ -78,17 +56,6 @@ it('renders ControlAppFont', async () => {
     expect(screenshot).toMatchImageSnapshot();
 });
 
-it('renders AppFont', async () => {
-    render(<AppFont/>);
-    const screenshot = await generateImage({
-        viewport: {
-            height: 800,
-            width: 500
-        }
-    });
-    expect(screenshot).toMatchImageSnapshot();
-})
-
 it('renders ControlAppImage', async () => {
     render(<ControlAppImage/>);
     const screenshot = await generateImage({
@@ -99,14 +66,3 @@ it('renders ControlAppImage', async () => {
     });
     expect(screenshot).toMatchImageSnapshot();
 });
-
-it('renders AppImage', async () => {
-    render(<AppImage/>);
-    const screenshot = await generateImage({
-        viewport: {
-            height: 800,
-            width: 500
-        }
-    });
-    expect(screenshot).toMatchImageSnapshot();
-})
