@@ -6,7 +6,7 @@ const config: Config.InitialOptions = {
     verbose: true,
     setupFilesAfterEnv: ['./setupTests.ts'],
     transform: {
-        '^.+\\.js$': 'babel-jest',
+        '^.+\\.[jt]sx?$': 'babel-jest',
         '^.+\\.css$': 'jest-transform-css',
         '\\.(jpg|jpeg|png|gif|webp|svg)$': 'jest-transform-file'
     },
