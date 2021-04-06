@@ -11,7 +11,7 @@ initStoryshots({
     // invoke the function above here
     getMatchOptions: (arg) => {
         const fileName = (arg.context as any).fileName;
-        const snapshotPath = path.join(path.dirname(fileName), '_image_snapshots');
+        const snapshotPath = path.join('./_image_snapshots', path.dirname(fileName));
         return { customSnapshotsDir: snapshotPath };
     },
     storybookUrl: `file://${path.resolve(__dirname, '../storybook-static')}`

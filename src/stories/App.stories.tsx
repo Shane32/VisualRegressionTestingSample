@@ -1,10 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import App from './App';
+import App from '../App';
 
 export default {
-  title: 'App',
+  title: 'App2',
   component: App,
   argTypes: {
   },
@@ -12,6 +12,5 @@ export default {
 
 const Template: Story<{}> = (args) => <App {...args} />;
 
-export const Demo = Template.bind({});
-Demo.args = {
-};
+export const Demo2 = Template.bind({});
+Demo2.args = {};
