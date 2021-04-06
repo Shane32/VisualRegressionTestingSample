@@ -7,7 +7,7 @@ const config: Config.InitialOptions = {
     setupFilesAfterEnv: ['./setupTests.ts'],
     transform: {
         '^.+\\.[jt]sx?$': 'babel-jest',
-        '^.+\\.css$': 'jest-transform-css',
+        '^.+\\.s?css$': 'jest-transform-scss',
         '\\.(jpg|jpeg|png|gif|webp|svg)$': 'jest-transform-file'
     },
     maxWorkers: 1,
