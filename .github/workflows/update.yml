@@ -1,0 +1,34 @@
+name: Update snapshots
+
+on:
+  issue_comment:
+
+env:
+  NODE_VERSION: '14.x'   # set this to the node version to use
+
+jobs:
+  if: contains(github.event.comment.html\_url, '/pull/') && contains(github.event.comment.body, '/update')
+  build-check:
+    name: Update snapshots
+    runs-on: windows-latest
+    steps:
+    - run: exit 1
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: npm install
+      run: npm install
+    - name: npm run build
+      run: npm run build
+    - name: npm run build-storybook
+      run: npm run build-storybook
+    - name: npm run test-update
+      run: npm run test-update
+    - name: Upload visual regression failures
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: Visual regression report
+        path: _image_snapshots/__diff_output__/**
