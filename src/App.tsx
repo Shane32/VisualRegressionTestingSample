@@ -8,7 +8,7 @@ import wifi from "./images/wifi.png";
 
 const App = () => {
     return (<>
-        <p style={{fontFamily:"Train One", fontSize:40}}>FONT SAMPLE</p>
+        <p style={{fontFamily:"Train One", fontSize:40}}>FONT NEW</p>
         <table>
             <tbody>
             <tr>
