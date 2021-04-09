@@ -2,13 +2,19 @@ name: Update snapshots
 
 on:
   issue_comment:
-    types: [created]
+    types: [created,edited,deleted]
+  pull_request_review_comment:
 
 env:
   NODE_VERSION: '14.x'   # set this to the node version to use
 
 jobs:
-  build-check:
+  test1:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - run: exit 1
+  test2:
     if: contains(github.event.comment.html_url, '/pull/') && contains(github.event.comment.body, '/update')
     name: Update snapshots
     runs-on: windows-latest
