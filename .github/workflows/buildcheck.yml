@@ -22,8 +22,8 @@ jobs:
       run: npm run build
     - name: npm run build-storybook
       run: npm run build-storybook
-    - name: npm run test-update
-      run: npm run test-update
+    - name: npm run test
+      run: npm run test
     - name: Upload visual regression failures
       uses: actions/upload-artifact@v2
       if: failure()
