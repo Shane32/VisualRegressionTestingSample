@@ -14,8 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: exit 1
+  test3:
+    name: Test3
+    runs-on: ubuntu-latest
+    steps:
+    - run: exit 1
   test2:
-    if: contains(github.event.comment.html_url, '/pull/') && contains(github.event.comment.body, '/update')
+    if: ${{ github.event.issue.pull_request }} && contains(github.event.comment.body, '/update')
     name: Update snapshots
     runs-on: windows-latest
     steps:
