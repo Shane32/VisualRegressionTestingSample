@@ -1,0 +1,45 @@
+name: Update snapshots
+
+on:
+  issue_comment:
+    types: [created]
+    
+jobs:
+  update_snapshots:
+    if: contains(github.event.comment.html_url, '/pull/') && github.event.comment.body == '/update' #${{ github.event.issue.pull_request }} && github.event.comment.body == '/update'
+    name: Update snapshots
+    runs-on: windows-latest
+    steps:
+      - name: Clone git repo
+        uses: actions/checkout@v2
+      - name: Checkout Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          PR_URL="${{ github.event.issue.pull_request.url }}"
+          PR_NUM=${PR_URL##*/}
+          echo "Checking out from PR #$PR_NUM based on URL: $PR_URL"
+          hub pr checkout $PR_NUM
+      - name: Configure Git Agent
+        shell: bash
+        run: |
+          git config --global user.email "my.email@sample.com"
+          git config --global user.name "Me, Not Really (CI bot)"
+      - name: npm install
+        run: npm install
+      - name: npm run build
+        run: npm run build
+      - name: npm run build-storybook
+        run: npm run build-storybook
+      - name: npm run test-update
+        run: npm run test-update
+      - name: git add
+        shell: bash
+        run: git add --all
+      - name: git commit
+        shell: bash
+        run: git commit -a -m "Update snapshots"
+      - name: git push
+        shell: bash
+        run: git push

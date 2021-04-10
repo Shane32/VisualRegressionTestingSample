@@ -35,7 +35,9 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public -o storybook-static",
-    "test-storybook": "build-storybook -s public -o storybook-static && react-scripts test"
+    "test-storybook": "build-storybook -s public -o storybook-static && react-scripts test",
+    "update-snapshots": "build-storybook -s public -o storybook-static && react-scripts test -u",
+    "test-update": "react-scripts test -u"
   },
   "browserslist": {
     "production": [
